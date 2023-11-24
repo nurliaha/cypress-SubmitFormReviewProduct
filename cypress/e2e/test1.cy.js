@@ -32,7 +32,7 @@ describe("Positif - As a user, I can submit form Review Product ", function(){
       cy.get('div:contains("Your report was submitted.")').should("contain.text", "Your report was submitted.")
       
     })
-} ) 
+}) 
 
 describe("Negative - As a user, I cannot submit form Review Product ", function(){
   it("verify can't submit when field name empty", function(){
@@ -64,5 +64,44 @@ describe("Negative - As a user, I cannot submit form Review Product ", function(
     cy.get('[data-automation-id="validationError"]').eq(3).should("contain.text", "This question is required.")
     cy.get('[data-automation-id="validationError"]').eq(4).should("contain.text", "This question is required.")
     cy.get('[data-automation-id="submitError"]').should("contain.text", "5 question(s) need to be completed before submitting: Question 1,Question 2,Question 3,Question 4,Question 5.")
+  })
+
+  it("verify cancelled clearing form permanently ", function(){
+    cy.visit("https://forms.office.com/pages/responsepage.aspx?id=is2XW8LLaEmfFhLKD9VwE9lpKmxdveNGmMWKETZvAWNUMzhBV1lYTlc1SDNRS00xRVg4OFhPODlQTS4u")
+    cy.get('input[data-automation-id="textInput"]').should('have.length', 3) 
+    cy.get('input[data-automation-id="textInput"]').eq(0).type("Nana")
+    cy.get('input[data-automation-id="textInput"]').eq(1).type('098766554462')
+    cy.get('input[data-automation-id="textInput"]').eq(2).type("Nanananana")
+
+    let ratingClicked = false
+    let datePickerClicked = false
+    let dateClicked = false
+    let moreOptionClicked = false
+
+    cy.get('[aria-label="3 Star"]').click().then(() => { 
+      ratingClicked = true
+      cy.wrap(ratingClicked).should('be.true')
+    })
+    cy.get("#DatePicker0-label").click().then(() => { 
+      datePickerClicked = true
+      cy.wrap(ratingClicked).should('be.true')
+    })
+    cy.get('[aria-label="23, November, 2023"]').click().then(() => { 
+      dateClicked = true
+      cy.wrap(dateClicked).should('be.true')
+    })
+    cy.get('[aria-label="More options"]').click().then(() => { 
+      moreOptionClicked = true
+      cy.wrap(moreOptionClicked).should('be.true')
+    })
+  
+    cy.get('[role="menuitem"]').eq(1).click()
+    
+    // assertion
+    cy.get('input[data-automation-id="textInput"]').should('have.length', 3) 
+    cy.get('input[data-automation-id="textInput"]').eq(0).should("have.value", "Nana")
+    cy.get('input[data-automation-id="textInput"]').eq(1).should("have.value", "098766554462")
+    cy.get('input[data-automation-id="textInput"]').eq(2).should("have.value", "Nanananana")
+    
   })
 })
