@@ -8,8 +8,8 @@ describe("Positif - As a user, I can submit form Review Product ", function(){
   it("verify valid input for submit form", function(){
     cy.visit("https://forms.office.com/pages/responsepage.aspx?id=is2XW8LLaEmfFhLKD9VwE9lpKmxdveNGmMWKETZvAWNUMzhBV1lYTlc1SDNRS00xRVg4OFhPODlQTS4u")
     cy.get('input[data-automation-id="textInput"]').should('have.length', 3) 
-    cy.get('input[data-automation-id="textInput"]').eq(0).type("Nana")
-    cy.get('input[data-automation-id="textInput"]').eq(1).type('098766554462')
+    cy.get('input[data-automation-id="textInput"]').eq(0).type("Nanda Arsyinta")
+    cy.get('input[data-automation-id="textInput"]').eq(1).type('089766554462')
     cy.get('input[data-automation-id="textInput"]').eq(2).type("Nanananana")
     cy.get('[aria-label="3 Star"]').click()
     cy.get("#DatePicker0-label").click()
@@ -18,7 +18,7 @@ describe("Positif - As a user, I can submit form Review Product ", function(){
     cy.get("[data-automation-id='saveAndEditButton']").should('be.visible')
   })
 
-  it("verify report abuse", function(){
+  it("verify submit form report abuse", function(){
       cy.visit("https://forms.office.com/pages/responsepage.aspx?id=is2XW8LLaEmfFhLKD9VwE9lpKmxdveNGmMWKETZvAWNUMzhBV1lYTlc1SDNRS00xRVg4OFhPODlQTS4u")
       cy.get('a:contains("Report abuse")').click()
       cy.get('[data-automation-value="reportAbuseViolationRadioGroup"]').should('have.length',3)
