@@ -2,7 +2,8 @@
 
 Sample Project of Automation Testing using Cypress.
 
-Use Case: [Submit Form Review Product](https://forms.office.com/pages/responsepage.aspx?id=is2XW8LLaEmfFhLKD9VwE9lpKmxdveNGmMWKETZvAWNUMzhBV1lYTlc1SDNRS00xRVg4OFhPODlQTS4u)
+- [Submit Form Review Product](https://forms.office.com/pages/responsepage.aspx?id=is2XW8LLaEmfFhLKD9VwE9lpKmxdveNGmMWKETZvAWNUMzhBV1lYTlc1SDNRS00xRVg4OFhPODlQTS4u)
+- [Test Case](https://docs.google.com/spreadsheets/d/10yoCdSu4unW3LJ4e301G1AjFjs_I1-X0/edit?usp=sharing&ouid=117889667424608313022&rtpof=true&sd=true)
 
 ## Dependencies
 
